@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superbbb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fffdf6; --ink:#16163a; --blue:#2c3ee8; --butter:#ffe45c; --mint:#9be8c8; --muted:#55557a;
+  --font:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#12122b; --ink:#fffdf6; --blue:#8c98ff; --muted:#b4b4d6}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.55;font-size:1.0625rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+nav a{margin-left:1.5rem;text-decoration:none;color:var(--muted);font-weight:600}
+nav a:hover{color:var(--ink)}
+
+.hero{padding:3rem 0 4rem}
+h1{font-weight:800;font-size:clamp(3.5rem,13vw,10rem);line-height:.9;letter-spacing:-.05em}
+.bbb{display:inline-flex;gap:.04em;vertical-align:baseline}
+.bbb button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;letter-spacing:inherit;line-height:inherit;
+  transition:transform .35s cubic-bezier(.3,1.8,.5,1)}
+.bbb button:nth-child(1){color:var(--blue)}
+.bbb button:nth-child(2){color:var(--ink)}
+.bbb button:nth-child(3){color:var(--blue)}
+.bbb button:hover,.bbb button.pop{transform:translateY(-.12em) rotate(-6deg) scale(1.08)}
+.lead{max-width:34rem;margin-top:2rem;font-size:1.3rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;padding:.9rem 1.6rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.primary{background:var(--butter);color:#16163a;border-color:#16163a}
+.btn.primary:hover{background:#ffd91a}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem;padding:2rem 0 4rem}
+.feature{padding:2rem 1.75rem;border-radius:1.75rem 1.75rem 1.75rem .5rem}
+.feature:nth-child(1){background:var(--butter);color:#16163a}
+.feature:nth-child(2){background:var(--blue);color:#fff;border-radius:.5rem 1.75rem 1.75rem 1.75rem}
+.feature:nth-child(3){background:var(--mint);color:#16163a}
+@media (prefers-color-scheme:dark){.feature:nth-child(2){color:#12122b}}
+.feature h2{font-size:1.5rem;letter-spacing:-.02em;margin-bottom:.5rem}
+
+.quote{padding:3rem 0 5rem;max-width:44rem}
+.quote p{font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.2;font-weight:600;letter-spacing:-.025em}
+.quote small{display:block;margin-top:1rem;color:var(--muted);font-size:1rem}
+
+.signup{background:var(--ink);color:var(--paper);padding:4rem 0}
+.signup h2{font-size:clamp(2rem,5vw,3.25rem);letter-spacing:-.035em;line-height:1.05;max-width:30rem}
+.signup form{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.signup label{position:absolute;left:-9999px}
+.signup input{flex:1 1 15rem;max-width:22rem;padding:.9rem 1.2rem;border-radius:999px;border:2px solid var(--paper);background:transparent;color:var(--paper);font:inherit}
+.signup input::placeholder{color:var(--paper);opacity:.6}
+.signup button{padding:.9rem 1.6rem;border-radius:999px;border:2px solid var(--butter);background:var(--butter);color:#16163a;font:inherit;font-weight:600;cursor:pointer}
+.signup button:hover{background:#ffd91a}
+#msg{margin-top:1rem;min-height:1.5rem;color:var(--mint)}
+@media (prefers-color-scheme:dark){.signup{background:#1e1e44}}
+
+footer{padding:2rem 0;color:var(--muted);font-size:.95rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">Superbbb</a>
+    <nav aria-label="Main"><a href="#why">Why</a><a href="#join">Join</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Super<span class="bbb" role="group" aria-label="bbb"><button type="button" aria-label="b">b</button><button type="button" aria-label="b">b</button><button type="button" aria-label="b">b</button></span></h1>
+      <p class="lead">A small, fast, friendly home on the web. Say hello, look around, and get started in under a minute.</p>
+      <div class="cta">
+        <a class="btn primary" href="#join">Get started</a>
+        <a class="btn ghost" href="#why">See why it works</a>
+      </div>
+    </section>
+
+    <section class="features" id="why" aria-label="Highlights">
+      <article class="feature"><h2>Loads instantly</h2><p>One file, no frameworks, nothing to wait for. It opens the moment you do.</p></article>
+      <article class="feature"><h2>Fits every screen</h2><p>Phone, tablet or wide desktop, the layout adapts and stays easy to read.</p></article>
+      <article class="feature"><h2>Easy on the eyes</h2><p>Follows your light or dark setting, with clear focus outlines for keyboard users.</p></article>
+    </section>
+
+    <section class="quote">
+      <p>Everything on the page earns its place, and nothing slows you down.</p>
+      <small>The Superbbb idea</small>
+    </section>
+  </main>
+</div>
+
+<section class="signup" id="join">
+  <div class="wrap">
+    <h2>Join the list and be first to know.</h2>
+    <form id="form" novalidate>
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Join the list</button>
+    </form>
+    <p id="msg" role="status"></p>
+  </div>
+</section>
+
+<footer><div class="wrap">&copy; 2026 Superbbb</div></footer>
+
+<script>
+document.querySelectorAll('.bbb button').forEach(function(b){
+  b.addEventListener('click',function(){
+    b.classList.add('pop');
+    setTimeout(function(){b.classList.remove('pop')},350);
+  });
+});
+document.getElementById('form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('email').value.trim(), m=document.getElementById('msg');
+  m.textContent=/^\S+@\S+\.\S+$/.test(v)?'You\u2019re on the list. Thanks!':'Enter a valid email address, like you@example.com.';
+});
+</script>
+</body>
+</html>
