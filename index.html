@@ -3,129 +3,162 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Superbbb</title>
+<title>Badal – Cloud storage that feels light</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#fffdf6; --ink:#16163a; --blue:#2c3ee8; --butter:#ffe45c; --mint:#9be8c8; --muted:#55557a;
-  --font:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sky-top:#8ecbff; --sky-bot:#f1f9ff; --ink:#0c2340; --muted:#41597a; --card:#ffffff;
+  --sun:#ffbf3c; --blue:#1b57e8; --cloud:#ffffff; --line:#cfe3f7;
+  --head:"Fraunces",Georgia,serif; --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{--paper:#12122b; --ink:#fffdf6; --blue:#8c98ff; --muted:#b4b4d6}
+  :root{--sky-top:#0a1a38; --sky-bot:#10264d; --ink:#eaf3ff; --muted:#a9c0de; --card:#14305f;
+    --cloud:#27487f; --line:#25447a; --blue:#7fa6ff}
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.55;font-size:1.0625rem}
+body{font-family:var(--body);color:var(--ink);background:var(--sky-bot);line-height:1.6;font-size:1.05rem}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem}
 
+/* hero with drifting clouds */
+.sky{position:relative;overflow:hidden;background:linear-gradient(var(--sky-top),var(--sky-bot) 92%);padding-bottom:5rem}
+.sun{position:absolute;right:12%;top:90px;width:110px;height:110px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 28px rgba(255,191,60,.25)}
+.cloud{position:absolute;width:180px;height:56px;background:var(--cloud);border-radius:60px;animation:drift linear infinite;opacity:.95}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud::before{width:80px;height:80px;left:26px;top:-38px}
+.cloud::after{width:60px;height:60px;left:90px;top:-26px}
+.c1{top:150px;animation-duration:70s;animation-delay:-20s}
+.c2{top:260px;transform:scale(1.5);animation-duration:95s;animation-delay:-60s;opacity:.7}
+.c3{top:60px;transform:scale(.7);animation-duration:60s;animation-delay:-5s;opacity:.8}
+@keyframes drift{from{left:-300px}to{left:110%}}
+header,.hero{position:relative;z-index:2}
 header{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0}
-.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
-nav a{margin-left:1.5rem;text-decoration:none;color:var(--muted);font-weight:600}
-nav a:hover{color:var(--ink)}
+.logo{font-family:var(--head);font-weight:800;font-size:1.6rem;text-decoration:none}
+nav a{margin-left:1.5rem;text-decoration:none;font-weight:600}
+nav a:hover{text-decoration:underline}
+.hero{padding-top:4rem;max-width:40rem}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.02em}
+.hero p{margin-top:1.25rem;font-size:1.25rem;color:var(--ink);max-width:32rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:12px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--ink);color:var(--sky-bot)}
+.btn.main:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.alt{background:rgba(255,255,255,.35)}
+.btn.alt:hover{background:var(--sun);color:#0c2340;border-color:#0c2340}
 
-.hero{padding:3rem 0 4rem}
-h1{font-weight:800;font-size:clamp(3.5rem,13vw,10rem);line-height:.9;letter-spacing:-.05em}
-.bbb{display:inline-flex;gap:.04em;vertical-align:baseline}
-.bbb button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;letter-spacing:inherit;line-height:inherit;
-  transition:transform .35s cubic-bezier(.3,1.8,.5,1)}
-.bbb button:nth-child(1){color:var(--blue)}
-.bbb button:nth-child(2){color:var(--ink)}
-.bbb button:nth-child(3){color:var(--blue)}
-.bbb button:hover,.bbb button.pop{transform:translateY(-.12em) rotate(-6deg) scale(1.08)}
-.lead{max-width:34rem;margin-top:2rem;font-size:1.3rem;color:var(--muted)}
-.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
-.btn{display:inline-block;padding:.9rem 1.6rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
-.btn.primary{background:var(--butter);color:#16163a;border-color:#16163a}
-.btn.primary:hover{background:#ffd91a}
-.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+section.block{padding:4.5rem 0 0}
+h2{font-family:var(--head);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin-bottom:1rem}
+.sub{color:var(--muted);max-width:36rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem;margin-top:2rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.75rem}
+.card h3{font-family:var(--head);font-size:1.3rem;margin-bottom:.4rem}
+.card p{color:var(--muted)}
+.ico{width:46px;height:46px;border-radius:14px;background:var(--sun);display:grid;place-items:center;margin-bottom:1rem;color:#0c2340}
 
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem;padding:2rem 0 4rem}
-.feature{padding:2rem 1.75rem;border-radius:1.75rem 1.75rem 1.75rem .5rem}
-.feature:nth-child(1){background:var(--butter);color:#16163a}
-.feature:nth-child(2){background:var(--blue);color:#fff;border-radius:.5rem 1.75rem 1.75rem 1.75rem}
-.feature:nth-child(3){background:var(--mint);color:#16163a}
-@media (prefers-color-scheme:dark){.feature:nth-child(2){color:#12122b}}
-.feature h2{font-size:1.5rem;letter-spacing:-.02em;margin-bottom:.5rem}
+/* calculator */
+.calc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:2rem;margin-top:2rem;display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));align-items:center}
+.calc input[type=range]{width:100%;accent-color:var(--blue);height:2rem}
+.size{font-family:var(--head);font-size:2.4rem;font-weight:800}
+.price{font-family:var(--head);font-size:3rem;font-weight:800;color:var(--blue)}
+.price small{font-family:var(--body);font-size:1rem;color:var(--muted);font-weight:400}
+.note{color:var(--muted);font-size:.95rem;margin-top:.25rem}
 
-.quote{padding:3rem 0 5rem;max-width:44rem}
-.quote p{font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.2;font-weight:600;letter-spacing:-.025em}
-.quote small{display:block;margin-top:1rem;color:var(--muted);font-size:1rem}
+.faq{margin-top:1.5rem}
+details{border-bottom:1px solid var(--line);padding:1rem 0}
+summary{cursor:pointer;font-weight:600;font-size:1.1rem}
+details p{margin-top:.6rem;color:var(--muted);max-width:40rem}
 
-.signup{background:var(--ink);color:var(--paper);padding:4rem 0}
-.signup h2{font-size:clamp(2rem,5vw,3.25rem);letter-spacing:-.035em;line-height:1.05;max-width:30rem}
-.signup form{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
-.signup label{position:absolute;left:-9999px}
-.signup input{flex:1 1 15rem;max-width:22rem;padding:.9rem 1.2rem;border-radius:999px;border:2px solid var(--paper);background:transparent;color:var(--paper);font:inherit}
-.signup input::placeholder{color:var(--paper);opacity:.6}
-.signup button{padding:.9rem 1.6rem;border-radius:999px;border:2px solid var(--butter);background:var(--butter);color:#16163a;font:inherit;font-weight:600;cursor:pointer}
-.signup button:hover{background:#ffd91a}
-#msg{margin-top:1rem;min-height:1.5rem;color:var(--mint)}
-@media (prefers-color-scheme:dark){.signup{background:#1e1e44}}
-
-footer{padding:2rem 0;color:var(--muted);font-size:.95rem}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.final{margin:5rem 0 0;background:var(--ink);color:var(--sky-bot);padding:4rem 0;text-align:center}
+@media (prefers-color-scheme:dark){.final{background:#0a1a38}}
+.final h2{margin-bottom:.5rem}
+.final .btn{background:var(--sun);color:#0c2340;border-color:var(--sun);margin-top:1.5rem}
+.final .btn:hover{background:#ffd06b}
+footer{padding:1.75rem 0;color:var(--muted);font-size:.95rem;text-align:center}
+@media (prefers-reduced-motion:reduce){.cloud{animation:none}.c1{left:8%}.c2{left:50%}.c3{left:70%}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a class="logo" href="#top">Superbbb</a>
-    <nav aria-label="Main"><a href="#why">Why</a><a href="#join">Join</a></nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <h1>Super<span class="bbb" role="group" aria-label="bbb"><button type="button" aria-label="b">b</button><button type="button" aria-label="b">b</button><button type="button" aria-label="b">b</button></span></h1>
-      <p class="lead">A small, fast, friendly home on the web. Say hello, look around, and get started in under a minute.</p>
-      <div class="cta">
-        <a class="btn primary" href="#join">Get started</a>
-        <a class="btn ghost" href="#why">See why it works</a>
+<div class="sky">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="cloud c3" aria-hidden="true"></div>
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#top">Badal</a>
+      <nav aria-label="Main"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    </header>
+    <main id="top" class="hero">
+      <h1>Your files, light as a cloud.</h1>
+      <p>Badal keeps your photos, documents and projects safe online. Open them on any device, share with one link, and never run out of space.</p>
+      <div class="btns">
+        <a class="btn main" href="#pricing">Start free</a>
+        <a class="btn alt" href="#features">See how it works</a>
       </div>
-    </section>
-
-    <section class="features" id="why" aria-label="Highlights">
-      <article class="feature"><h2>Loads instantly</h2><p>One file, no frameworks, nothing to wait for. It opens the moment you do.</p></article>
-      <article class="feature"><h2>Fits every screen</h2><p>Phone, tablet or wide desktop, the layout adapts and stays easy to read.</p></article>
-      <article class="feature"><h2>Easy on the eyes</h2><p>Follows your light or dark setting, with clear focus outlines for keyboard users.</p></article>
-    </section>
-
-    <section class="quote">
-      <p>Everything on the page earns its place, and nothing slows you down.</p>
-      <small>The Superbbb idea</small>
-    </section>
-  </main>
+    </main>
+  </div>
 </div>
 
-<section class="signup" id="join">
+<div class="wrap">
+  <section class="block" id="features">
+    <h2>Everything you need, nothing you don’t</h2>
+    <p class="sub">Upload once and your files follow you everywhere.</p>
+    <div class="grid">
+      <div class="card"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.7 1.5A4 4 0 0 0 6.5 19z"/></svg></div><h3>Sync everywhere</h3><p>Change a file on your phone and it updates on your laptop in seconds.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Private by default</h3><p>Files are encrypted before they leave your device. Only you hold the key.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.6l6.8-4M8.6 13.4l6.8 4"/></svg></div><h3>Share with a link</h3><p>Send big files to anyone. Set an expiry date or a password in one tap.</p></div>
+      <div class="card"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></div><h3>30-day history</h3><p>Deleted something by mistake? Restore any file or folder from the last 30 days.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="pricing">
+    <h2>Pay only for the space you use</h2>
+    <p class="sub">Move the slider to see your monthly price. The first 5 GB are always free.</p>
+    <div class="calc">
+      <div>
+        <label for="gb" class="note">Storage needed</label>
+        <div class="size"><span id="size">100 GB</span></div>
+        <input id="gb" type="range" min="5" max="2000" step="5" value="100" aria-describedby="plan">
+      </div>
+      <div>
+        <div class="price" aria-live="polite">₹<span id="price">0</span> <small>/ month</small></div>
+        <p class="note" id="plan"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <h2>Questions, answered</h2>
+    <div class="faq">
+      <details><summary>Is my data really private?</summary><p>Yes. Files are encrypted on your device before upload, so even Badal staff cannot open them.</p></details>
+      <details><summary>Can I cancel anytime?</summary><p>Yes. Cancel from settings and download all your files before your plan ends.</p></details>
+      <details><summary>Does it work on phones?</summary><p>Badal works in any browser and has apps for Android and iPhone.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="final">
   <div class="wrap">
-    <h2>Join the list and be first to know.</h2>
-    <form id="form" novalidate>
-      <label for="email">Email address</label>
-      <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-      <button type="submit">Join the list</button>
-    </form>
-    <p id="msg" role="status"></p>
+    <h2>Give your files some sky.</h2>
+    <p>Create a free account in under a minute.</p>
+    <a class="btn" href="#top">Create free account</a>
   </div>
 </section>
-
-<footer><div class="wrap">&copy; 2026 Superbbb</div></footer>
+<footer>&copy; 2026 Badal Cloud. Made with care in India.</footer>
 
 <script>
-document.querySelectorAll('.bbb button').forEach(function(b){
-  b.addEventListener('click',function(){
-    b.classList.add('pop');
-    setTimeout(function(){b.classList.remove('pop')},350);
-  });
-});
-document.getElementById('form').addEventListener('submit',function(e){
-  e.preventDefault();
-  var v=document.getElementById('email').value.trim(), m=document.getElementById('msg');
-  m.textContent=/^\S+@\S+\.\S+$/.test(v)?'You\u2019re on the list. Thanks!':'Enter a valid email address, like you@example.com.';
-});
+var gb=document.getElementById('gb'),size=document.getElementById('size'),price=document.getElementById('price'),plan=document.getElementById('plan');
+function update(){
+  var g=+gb.value, p=g<=5?0:Math.round(g*1.5);
+  size.textContent=g>=1000?(g/1000)+' TB':g+' GB';
+  price.textContent=p.toLocaleString('en-IN');
+  plan.textContent=g<=5?'Free plan, no card needed.':(g<=200?'Great for photos and documents.':(g<=1000?'Great for videos and big projects.':'Great for teams and studios.'));
+}
+gb.addEventListener('input',update);update();
 </script>
 </body>
 </html>
