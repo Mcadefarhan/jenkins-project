@@ -155,7 +155,7 @@ var gb=document.getElementById('gb'),size=document.getElementById('size'),price=
 function update(){
   var g=+gb.value, p=g<=5?0:Math.round(g*1.5);
   size.textContent=g>=1000?(g/1000)+' TB':g+' GB';
-  price.textContent=p.toLocaleString('en-IN');
+  price.textContent=p.toLocaleString('en-IN';
   plan.textContent=g<=5?'Free plan, no card needed.':(g<=200?'Great for photos and documents.':(g<=1000?'Great for videos and big projects.':'Great for teams and studios.'));
 }
 gb.addEventListener('input',update);update();
